@@ -11,7 +11,7 @@ export default function IPAddress() {
   const address = ipAddress.length ? ipAddress : 'unknown';
 
   return (
-    <section className="ip-address">
+    <section className="ip-address col">
       <h2>Your IP Address:</h2>
       <p className="ip-address__result">
         <em>{loading ? 'Loading...' : address}</em>

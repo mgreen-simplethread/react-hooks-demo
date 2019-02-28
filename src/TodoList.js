@@ -21,7 +21,7 @@ export default function TodoList() {
   };
 
   return (
-    <div className="tasks">
+    <section className="tasks col">
       <ul className="tasks__list">
         {!tasks.length
           ? 'No tasks yet!'
@@ -38,6 +38,6 @@ export default function TodoList() {
         </p>
         <input type="submit" value="Add Task" />
       </form>
-    </div>
+    </section>
   );
 }

@@ -11,10 +11,10 @@ export default function Counter() {
   const dec = () => dispatch({ type: 'COUNTER_DEC' });
 
   return (
-    <div className="counter">
+    <section className="counter col">
       <p>You clicked the button {counter} times</p>
       <button onClick={inc}>++</button>
       <button onClick={dec}>--</button>
-    </div>
+    </section>
   );
 }
