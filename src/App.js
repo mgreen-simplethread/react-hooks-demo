@@ -1,12 +1,16 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 import Counter from './Counter';
+import TodoList from './TodoList';
+import IPAddress from './IPAddress';
 
-const App = () => (
-  <div className="App">
-    <Counter />
-  </div>
-);
+// import './App.css';
 
-export default App;
+export default function App() {
+  return (
+    <main className="App">
+      <Counter />
+      <TodoList />
+      <IPAddress />
+    </main>
+  );
+}
