@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
-import { AppContext } from './AppContext';
+import React from 'react';
+import { useAppContext } from './AppContext';
 
 export default function Counter() {
   const {
     state: { counter },
     dispatch,
-  } = useContext(AppContext);
+  } = useAppContext();
 
   const inc = () => dispatch({ type: 'COUNTER_INC' });
   const dec = () => dispatch({ type: 'COUNTER_DEC' });

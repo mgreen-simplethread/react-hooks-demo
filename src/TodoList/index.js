@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { AppContext } from '../AppContext';
+import { useAppContext } from '../AppContext';
 import TaskList from './TaskList';
 import TaskForm from './TaskForm';
 
@@ -7,7 +7,7 @@ export default function TodoList() {
   const {
     state: { tasks },
     dispatch,
-  } = useContext(AppContext);
+  } = useAppContext();
 
   const addTask = (task) => {
     dispatch({ type: 'TASK_ADD', task });

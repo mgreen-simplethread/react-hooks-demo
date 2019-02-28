@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, useReducer, useContext } from 'react';
 
 const API_URL = 'https://api.ipify.org/?format=json';
 
@@ -74,7 +74,9 @@ const reducer = (state, action) => {
   }
 };
 
-function AppContextProvider(props) {
+export { AppContext };
+
+export function AppContextProvider(props) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   // Grouping async actions together into this object is analagous to using a thunk in a Redux action creator:
@@ -92,6 +94,6 @@ function AppContextProvider(props) {
   return <AppContext.Provider value={value}>{props.children}</AppContext.Provider>;
 }
 
-const AppContextConsumer = AppContext.Consumer;
+export const AppContextConsumer = AppContext.Consumer;
 
-export { AppContext, AppContextProvider, AppContextConsumer };
+export const useAppContext = () => useContext(AppContext);

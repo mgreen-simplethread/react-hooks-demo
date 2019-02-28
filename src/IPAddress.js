@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
-import { AppContext } from './AppContext';
+import React from 'react';
+import { useAppContext } from './AppContext';
 
 export default function IPAddress() {
   const {
     dispatch,
     state: { ipAddress, loading },
     actions: { fetchIP },
-  } = useContext(AppContext);
+  } = useAppContext();
 
   const address = ipAddress.length ? ipAddress : 'unknown';
 

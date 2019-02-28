@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
-import { AppContext } from './AppContext';
+import React from 'react';
+import { useAppContext } from './AppContext';
 
 export default function StateView() {
-  let { state } = useContext(AppContext);
+  let { state } = useAppContext();
   let json = JSON.stringify(state, undefined, 2);
 
   return (
