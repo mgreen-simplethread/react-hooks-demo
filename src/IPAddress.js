@@ -8,11 +8,6 @@ export default function IPAddress() {
     actions: { fetchIP },
   } = useContext(AppContext);
 
-  const requestIP = async (evt) => {
-    evt.preventDefault();
-    fetchIP();
-  };
-
   const address = ipAddress.length ? ipAddress : 'unknown';
 
   return (
@@ -21,7 +16,7 @@ export default function IPAddress() {
       <p className="ip-address__result">
         <em>{loading ? 'Loading...' : address}</em>
       </p>
-      <button disabled={loading} onClick={requestIP}>
+      <button disabled={loading} onClick={fetchIP}>
         Get My IP Address
       </button>
       <button onClick={() => dispatch({ type: 'IP_RESET' })}>Clear IP</button>
