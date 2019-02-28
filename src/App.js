@@ -8,7 +8,7 @@ import './App.css';
 
 export default function App() {
   return (
-    <React.Fragment>
+    <>
       <header>
         <h1>Buncha Components Using App State</h1>
       </header>
@@ -18,6 +18,6 @@ export default function App() {
         <IPAddress />
         <StateView />
       </main>
-    </React.Fragment>
+    </>
   );
 }
