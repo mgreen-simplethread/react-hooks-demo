@@ -11,8 +11,8 @@ const initialState = {
   loading: false,
 };
 
-// Reducers can only do synchronous operations. Put your async stuff in useEffect calls in specific components, then
-// call synchronous reducer actions using the results of those async ops.
+// Reducers can only do synchronous operations. Instead of thunks, put async code into action functions inside the
+// provider component.
 const reducer = (state, action) => {
   console.debug('ACTION DISPATCH :: %s %O', action.type, action);
 
@@ -76,6 +76,8 @@ const reducer = (state, action) => {
 
 function AppContextProvider(props) {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  // Grouping async actions together into this object is analagous to using a thunk in a Redux action creator:
   const actions = {
     async fetchIP() {
       dispatch({ type: 'IP_REQUEST' });
