@@ -8,7 +8,7 @@ export default function TaskList({ tasks, removeTask }) {
         ? 'No tasks yet!'
         : tasks.map((task, idx) => (
             <li className="task" key={`task-${idx}`}>
-              <span className="task__body">{task}</span> <button onClick={removeTask(idx)}>[remove]</button>
+              <span className="task__body">{task}</span> <button onClick={() => removeTask(idx)}>[remove]</button>
             </li>
           ))}
     </ul>

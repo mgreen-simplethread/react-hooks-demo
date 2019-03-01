@@ -29,6 +29,7 @@ const reducer = (state, action) => {
         tasks,
       };
     case 'TASK_ADD':
+      console.log(action);
       return {
         ...state,
         tasks: [...state.tasks, action.task],
@@ -77,19 +78,35 @@ const reducer = (state, action) => {
 export { AppContext };
 
 export function AppContextProvider(props) {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  let [state, dispatch] = useReducer(reducer, initialState);
 
-  // Grouping async actions together into this object is analagous to using a thunk in a Redux action creator:
-  const actions = {
+  // Grouping async actions together into this object is analagous to using a thunk in a Redux action creator.
+  // We can also make action creators for synchronous dispatch calls to make our code more Reduxy, too.
+  let actions = {
     async fetchIP() {
       dispatch({ type: 'IP_REQUEST' });
       const resp = await fetch(API_URL);
       const { ip } = await resp.json();
       dispatch({ type: 'IP_RECEIVE', ip });
     },
+    resetIP() {
+      dispatch({ type: 'IP_RESET' });
+    },
+    incrementCounter() {
+      dispatch({ type: 'COUNTER_INC' });
+    },
+    decrementCounter() {
+      dispatch({ type: 'COUNTER_DEC' });
+    },
+    addTask(task) {
+      dispatch({ type: 'TASK_ADD', task });
+    },
+    removeTask(index) {
+      dispatch({ type: 'TASK_REMOVE', index });
+    },
   };
 
-  const value = { state, dispatch, actions };
+  let value = { state, dispatch, actions };
 
   return <AppContext.Provider value={value}>{props.children}</AppContext.Provider>;
 }

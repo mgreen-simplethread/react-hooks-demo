@@ -6,11 +6,8 @@ import TaskForm from './TaskForm';
 export default function TodoList() {
   const {
     state: { tasks },
-    dispatch,
+    actions: { addTask, removeTask },
   } = useAppContext();
-
-  const addTask = (task) => dispatch({ type: 'TASK_ADD', task });
-  const removeTask = (index) => () => dispatch({ type: 'TASK_REMOVE', index });
 
   return (
     <section className="tasks col">

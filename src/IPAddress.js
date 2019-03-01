@@ -3,9 +3,8 @@ import { useAppContext } from './AppContext';
 
 export default function IPAddress() {
   const {
-    dispatch,
     state: { ipAddress, loading },
-    actions: { fetchIP },
+    actions: { fetchIP, resetIP },
   } = useAppContext();
 
   const address = ipAddress.length ? ipAddress : 'unknown';
@@ -19,7 +18,7 @@ export default function IPAddress() {
       <button disabled={loading} onClick={fetchIP}>
         Get My IP Address
       </button>
-      <button onClick={() => dispatch({ type: 'IP_RESET' })}>Clear IP</button>
+      <button onClick={resetIP}>Clear IP</button>
     </section>
   );
 }
