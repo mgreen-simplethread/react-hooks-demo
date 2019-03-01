@@ -9,9 +9,7 @@ export default function TodoList() {
     dispatch,
   } = useAppContext();
 
-  const addTask = (task) => {
-    dispatch({ type: 'TASK_ADD', task });
-  };
+  const addTask = (task) => dispatch({ type: 'TASK_ADD', task });
   const removeTask = (index) => () => dispatch({ type: 'TASK_REMOVE', index });
 
   return (

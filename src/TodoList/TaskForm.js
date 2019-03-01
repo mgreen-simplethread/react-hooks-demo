@@ -8,6 +8,7 @@ export default function TaskForm({ addTask }) {
   let handleChange = ({ target: { value } }) => setTask(value);
   let handleSubmit = (evt) => {
     evt.preventDefault();
+    if (!task.length) return;
     addTask(task);
     setTask('');
   };
@@ -18,7 +19,7 @@ export default function TaskForm({ addTask }) {
         <label htmlFor="task-input">Task:</label>{' '}
         <input id="task-input" placeholder="Buy milk" value={task} onChange={handleChange} />
       </p>
-      <input type="submit" value="Add Task" />
+      <input type="submit" value="Add Task" disabled={!task.length} />
     </form>
   );
 }
