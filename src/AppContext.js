@@ -1,10 +1,12 @@
 import React, { createContext, useReducer, useContext } from 'react';
+import { filter } from './util';
 
 const API_URL = 'https://api.ipify.org/?format=json';
 
 const AppContext = createContext();
 
 const initialState = {
+  tasksById: {},
   tasks: [],
   counter: 0,
   ipAddress: '',
@@ -17,29 +19,26 @@ const reducer = (state, action) => {
   console.debug('ACTION DISPATCH :: %s %O', action.type, action);
 
   let tasks;
+  let tasksById;
 
   switch (action.type) {
     case 'CLEAR':
       return initialState;
     case 'TASK_REMOVE':
-      tasks = [...state.tasks];
-      tasks.splice(action.index, 1);
+      tasksById = filter(state.tasksById, (id) => id !== action.index);
+      tasks = Object.keys(tasksById);
       return {
         ...state,
         tasks,
+        tasksById,
       };
     case 'TASK_ADD':
-      console.log(action);
-      return {
-        ...state,
-        tasks: [...state.tasks, action.task],
-      };
-    case 'TASK_UPDATE':
-      tasks = [...state.tasks];
-      tasks.splice(action.index, 1, action.task);
+      tasksById = { ...state.tasksById, [state.tasks.length]: action.task };
+      tasks = Object.keys(tasksById);
       return {
         ...state,
         tasks,
+        tasksById,
       };
     case 'COUNTER_INC':
       return {
