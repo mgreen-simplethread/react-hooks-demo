@@ -6,8 +6,7 @@ const API_URL = 'https://api.ipify.org/?format=json';
 const AppContext = createContext();
 
 const initialState = {
-  tasksById: {},
-  tasks: [],
+  tasks: {},
   counter: 0,
   ipAddress: '',
   loading: false,
@@ -19,26 +18,26 @@ const reducer = (state, action) => {
   console.debug('ACTION DISPATCH :: %s %O', action.type, action);
 
   let tasks;
-  let tasksById;
 
   switch (action.type) {
     case 'CLEAR':
       return initialState;
     case 'TASK_REMOVE':
-      tasksById = filter(state.tasksById, (id) => id !== action.index);
-      tasks = Object.keys(tasksById);
+      tasks = filter(state.tasks, (id) => parseInt(id, 10) !== action.index + 1);
       return {
         ...state,
         tasks,
-        tasksById,
       };
     case 'TASK_ADD':
-      tasksById = { ...state.tasksById, [state.tasks.length]: action.task };
-      tasks = Object.keys(tasksById);
+      const ids = Object.keys(state.tasks);
+      const newId = parseInt(ids[ids.length - 1] || '0', 10) + 1;
+      tasks = {
+        ...state.tasks,
+        [newId]: action.task,
+      };
       return {
         ...state,
         tasks,
-        tasksById,
       };
     case 'COUNTER_INC':
       return {
