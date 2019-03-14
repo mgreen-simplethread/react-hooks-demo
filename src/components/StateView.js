@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAppContext } from './AppContext';
+import { useAppContext } from '../AppContext';
 
 export default function StateView() {
   let { state } = useAppContext();

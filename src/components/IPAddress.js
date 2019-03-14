@@ -1,13 +1,15 @@
 import React from 'react';
-import { useAppContext } from './AppContext';
+import { useAppContext } from '../AppContext';
 
 export default function IPAddress() {
   const {
-    state: { ipAddress, loading },
+    state: {
+      ipAddress: { value, loading },
+    },
     actions: { fetchIP, resetIP },
   } = useAppContext();
 
-  const address = ipAddress.length ? ipAddress : 'unknown';
+  const address = value.length ? value : 'unknown';
 
   return (
     <section className="ip-address col">

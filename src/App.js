@@ -1,8 +1,8 @@
 import React from 'react';
-import Counter from './Counter';
-import TodoList from './TodoList';
-import IPAddress from './IPAddress';
-import StateView from './StateView';
+import Counter from './components/Counter';
+import TodoList from './components/TodoList';
+import IPAddress from './components/IPAddress';
+import StateView from './components/StateView';
 
 import './App.css';
 
