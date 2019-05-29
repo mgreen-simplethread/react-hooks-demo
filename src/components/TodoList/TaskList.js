@@ -2,13 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function TaskList({ tasks, removeTask }) {
+  const items = Object.entries(tasks);
+
   return (
     <ul className="tasks__list">
-      {tasks.length < 1
+      {items.length < 1
         ? 'No tasks yet!'
-        : tasks.map((task, idx) => (
-            <li className="task" key={`task-${idx}`}>
-              <span className="task__body">{task}</span> <button onClick={() => removeTask(idx)}>[remove]</button>
+        : items.map(([id, task]) => (
+            <li className="task" key={id}>
+              <span className="task__body">{task}</span> <button onClick={() => removeTask(id)}>[remove]</button>
             </li>
           ))}
     </ul>

@@ -12,7 +12,7 @@ export default function TodoList() {
   return (
     <section className="tasks col">
       <TaskForm addTask={addTask} />
-      <TaskList tasks={Object.values(tasks)} removeTask={removeTask} />
+      <TaskList tasks={tasks} removeTask={removeTask} />
     </section>
   );
 }

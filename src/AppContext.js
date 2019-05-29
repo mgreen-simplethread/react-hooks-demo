@@ -32,8 +32,8 @@ export function AppContextProvider(props) {
     addTask(task) {
       dispatch({ type: 'TASK_ADD', task });
     },
-    removeTask(index) {
-      dispatch({ type: 'TASK_REMOVE', index });
+    removeTask(id) {
+      dispatch({ type: 'TASK_REMOVE', id });
     },
   };
 
