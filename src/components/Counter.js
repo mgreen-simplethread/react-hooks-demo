@@ -2,6 +2,8 @@ import React from 'react';
 import { useAppContext } from '../AppContext';
 
 export default function Counter() {
+  console.debug('render Counter');
+
   const {
     state: { counter },
     actions: { incrementCounter, decrementCounter },

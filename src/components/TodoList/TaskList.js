@@ -18,6 +18,6 @@ export default function TaskList({ tasks, removeTask }) {
 }
 
 TaskList.propTypes = {
-  tasks: PropTypes.arrayOf(PropTypes.string),
+  tasks: PropTypes.objectOf(PropTypes.string),
   removeTask: PropTypes.func.isRequired,
 };

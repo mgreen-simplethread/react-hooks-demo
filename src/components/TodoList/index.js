@@ -4,6 +4,7 @@ import TaskList from './TaskList';
 import TaskForm from './TaskForm';
 
 export default function TodoList() {
+  console.debug('render TodoList');
   const {
     state: { tasks },
     actions: { addTask, removeTask },

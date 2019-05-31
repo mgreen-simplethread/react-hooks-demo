@@ -6,7 +6,13 @@ import StateView from './components/StateView';
 
 import './App.css';
 
+const DumbComponent = () => {
+  console.debug('render DumbComponent');
+  return <em>I'm a component that doesn't consume global state</em>;
+};
+
 export default function App() {
+  console.debug('render App');
   return (
     <>
       <header>
@@ -17,6 +23,7 @@ export default function App() {
         <TodoList />
         <IPAddress />
         <StateView />
+        <DumbComponent />
       </main>
     </>
   );

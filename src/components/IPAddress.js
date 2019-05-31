@@ -2,6 +2,8 @@ import React from 'react';
 import { useAppContext } from '../AppContext';
 
 export default function IPAddress() {
+  console.debug('render IPAddress');
+
   const {
     state: {
       ipAddress: { value, loading },
